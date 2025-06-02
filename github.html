@@ -70,7 +70,7 @@
       font-size: 1.3rem;
       color: #c9d1d9;
     }
-    a.profile-link {
+    a.profile-link ,a.repo-link {
       display: inline-block;
       padding: 10px 24px;
       font-weight: 600;
@@ -85,6 +85,11 @@
     a.profile-link:hover {
       background-color: #58a6ff;
       color: #0d1117;
+    }
+    a.repo-link:hover{
+      background-color: #58a6ff;
+      color: #0d1117;
+
     }
 
     /* Estilos da tela de carregamento */
@@ -150,6 +155,12 @@
             </div>
           </div>
           <a class="profile-link" href="${data.html_url}" target="_blank" rel="noopener noreferrer">Ver perfil no GitHub</a>
+          <br>
+          <br>
+           <a class="repo-link" href="https://github.com/MatheusIgorr/S25" target="_blank" rel="noopener noreferrer">
+  Ver repositório
+</a>
+
         `;
       })
       .catch(() => {
