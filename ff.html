@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  <title>Free Fire</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      font-family: 'Arial Black', Arial, sans-serif;
+      background: url('img/fundo-ff.jpg') no-repeat center center;
+      background-size: cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .tela-jogo {
+      width: 90vw;
+      max-width: 800px;
+      height: 90vh;
+      background: url('img/tela-ff.jpg') no-repeat center center;
+      background-size: cover;
+      border-radius: 20px;
+      padding: 40px;
+      text-align: center;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+      animation: fadeIn 1.5s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      backdrop-filter: brightness(0.7);
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      color: #ffcc00;
+      text-shadow: 2px 2px 6px #000;
+    }
+
+    p {
+      font-size: 1.4rem;
+      margin-bottom: 30px;
+      text-shadow: 1px 1px 4px #000;
+    }
+
+    .btn-jogar {
+        margin-top: 180px;
+      background-color: #dbb007;
+      color: #000;
+      padding: 15px 40px;
+      border: none;
+      border-radius: 12px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      width: 430px;
+      height: 80px;
+      margin-left:-13px ;
+      cursor: pointer;
+      box-shadow: 0 0 10px #ffcc00;
+      transition: all 0.3s ease;
+    }
+
+    .btn-jogar:hover {
+      background-color: #ffaa00;
+      transform: scale(1.05);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2.2rem;
+      }
+
+      p {
+        font-size: 1rem;
+      }
+
+      .btn-jogar {
+        font-size: 1rem;
+        padding: 12px 30px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="tela-jogo">
+
+    <button class="btn-jogar" onclick="alert('Entrando na partida...')">COMEÇAR JOGO</button>
+  </div>
+</body>
+</html>

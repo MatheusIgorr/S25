@@ -1,0 +1,139 @@
+/* Reset básico e fonte */
+* {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100vh;
+  width: 100vw;
+  margin-left: 10px;
+  background-color: black;
+}
+
+/* Fundo com imagem fixa centralizada */
+body {
+  background: url('img/fundo.jpg') no-repeat center center fixed;
+  background-size: cover;
+}
+
+/* Container principal ocupando a tela inteira */
+main {
+  position: relative;
+  height: 100vh;
+}
+
+/* Container da cena 3D */
+.scene {
+  width: 300px;
+  height: 600px;
+  perspective: 1000px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Telefone com transformação 3D */
+#telefone {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 1s ease-in-out;
+}
+
+/* Frente do telefone */
+#telefone .front {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: url('img/Front-Tela.png') no-repeat center center / cover;
+  border-radius: 20px;
+  backface-visibility: hidden;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  cursor: pointer; /* Opcional, se quiser clique */
+}
+
+/* Verso do telefone */
+#telefone .back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: url('img/back-tras.png') no-repeat center center / cover;
+  border-radius: 20px;
+  transform: rotateY(180deg);
+  backface-visibility: hidden;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  cursor: pointer; /* Opcional */
+}
+
+/* Iframe dentro do telefone */
+iframe#tela {
+  position: relative;
+  top: 65px;
+  left: 36px;
+  height: 471px;
+  width: 227px;
+  border: none;
+}
+
+/* Barra inferior de botões */
+.botoes {
+  top: 430px;
+  display: flex;
+  justify-content: space-around;
+  padding: 10px 0;
+  background-color: #00000000;
+  position: fixed;  /* Fixa a barra no rodapé da tela */
+  bottom: 0;
+  gap: 68px;
+  width: 10%;
+  left: 20%;
+  box-sizing: border-box;
+  z-index: 100; /* para ficar acima do conteúdo */
+}
+
+/* Botões dentro da barra */
+.botoes button {
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  color: white; /* para garantir visibilidade */
+  
+}
+button img {
+      max-width: 12px;
+      max-height: 30px;
+      object-fit: contain;
+      pointer-events: none; /* So click registers on button */
+    }
+
+.botoes button:hover {
+  transform: scale(1.2);
+}
+
+/* Botão único posicionado absoluto (se necessário) */
+button#central {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  border-radius: 8px;
+  background-color: #007bff;
+  color: white;
+  transition: background-color 0.3s;
+  z-index: 101; /* acima da barra */
+}
+
+button#central:hover {
+  background-color: #0056b3;
+}

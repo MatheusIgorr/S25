@@ -1,0 +1,97 @@
+/* Offers Section Styles */
+.offers-section {
+  margin-bottom: var(--spacing-xl);
+}
+
+.offers-carousel {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.offers-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-md);
+  width: 100%;
+}
+
+.offer-card {
+  position: relative;
+  border-radius: 3px;
+  overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease;
+}
+
+.offer-card:hover {
+  transform: translateY(-3px);
+}
+
+.offer-image {
+  position: relative;
+  overflow: hidden;
+}
+
+.offer-image img {
+  width: 100%;
+  height: auto;
+  transition: transform 0.3s ease;
+}
+
+.offer-card:hover .offer-image img {
+  transform: scale(1.05);
+}
+
+.offer-info {
+  padding: var(--spacing-sm);
+  background: linear-gradient(to bottom, rgba(42, 71, 94, 0.8), rgba(42, 71, 94, 1));
+  position: relative;
+}
+
+.discount-tag {
+  position: absolute;
+  top: -30px;
+  right: 0;
+  background-color: var(--steam-discount);
+  color: #000;
+  font-weight: bold;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: 2px 0 0 2px;
+}
+
+.discount-tag.special {
+  background-color: #fa3c3c;
+  color: white;
+}
+
+.offer-special {
+  position: absolute;
+  top: -30px;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  font-size: 0.8rem;
+  padding: var(--spacing-xs) var(--spacing-sm);
+}
+
+.offer-price {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  height: 40px;
+}
+
+.original-price {
+  font-size: 0.8rem;
+  text-decoration: line-through;
+  color: #738895;
+}
+
+.sale-price {
+  font-size: 1rem;
+  font-weight: bold;
+  color: var(--steam-text-light);
+}

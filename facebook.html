@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LinkedIn Simples</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<style>
+    body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background: #f3f2ef;
+}
+
+.container {
+  display: flex;
+  padding: 20px;
+  gap: 20px;
+}
+
+.sidebar, .news {
+  width: 20%;
+  background: white;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 0 4px rgba(0,0,0,0.1);
+}
+
+.feed {
+  width: 60%;
+}
+
+.profile {
+  text-align: center;
+}
+
+.avatar {
+  width: 80px;
+  border-radius: 50%;
+}
+
+.avatar-sm {
+  width: 40px;
+  border-radius: 50%;
+}
+
+.actions {
+  margin-top: 20px;
+}
+
+.actions button {
+  display: block;
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 8px;
+  background: #0a66c2;
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
+
+.publish {
+  background: white;
+  padding: 15px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-radius: 8px;
+}
+
+.publish input {
+  flex: 1;
+  padding: 10px;
+  border-radius: 20px;
+  border: 1px solid #ccc;
+}
+
+.post {
+  background: white;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+.poll button {
+  display: block;
+  width: 100%;
+  margin: 5px 0;
+  padding: 10px;
+  border: 1px solid #0a66c2;
+  background: white;
+  color: #0a66c2;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.votes {
+  font-size: 0.9em;
+  color: #555;
+}
+
+.news ul {
+  padding-left: 20px;
+}
+
+.news li {
+  margin-bottom: 10px;
+}
+
+</style>
+<body>
+  <div class="container">
+    <aside class="sidebar">
+      <div class="profile">
+        <img src="https://via.placeholder.com/80" alt="Foto de perfil" class="avatar">
+        <h2>Matheus Igor</h2>
+        <p>Desenvolvedor Front-end | HTML | CSS | JavaScript | MySQL</p>
+        <p><strong>Brasília, Distrito Federal</strong></p>
+        <p class="school">🎓 Universidade Paulista</p>
+      </div>
+      <div class="actions">
+        <button>Ampliar rede</button>
+        <button>Experimente o Premium</button>
+      </div>
+    </aside>
+
+    <main class="feed">
+      <section class="publish">
+        <img src="https://via.placeholder.com/40" alt="Avatar" class="avatar-sm">
+        <input type="text" placeholder="Comece uma publicação..." />
+      </section>
+
+      <section class="post">
+        <h3>Alura</h3>
+        <p>#QuizDevAlura para testar seus conhecimentos em Programação!</p>
+        <p><strong>Para que serve o protocolo HTTP?</strong></p>
+        <div class="poll">
+          <button onclick="vote(this)">LETRA A</button>
+          <button onclick="vote(this)">LETRA B</button>
+          <button onclick="vote(this)">LETRA C</button>
+          <button onclick="vote(this)">LETRA D</button>
+        </div>
+        <p class="votes">9.823 votos • Faltam 3 dias</p>
+      </section>
+    </main>
+
+    <aside class="news">
+      <h3>LinkedIn Notícias</h3>
+      <ul>
+        <li>O que é o cargo de 'chief of staff'?</li>
+        <li>Ainda fará sentido aprender idiomas?</li>
+        <li>Como atrair a Geração Z?</li>
+        <li>Os melhores bancos em experiência digital</li>
+        <li>Por que Musk deixou o governo Trump</li>
+      </ul>
+    </aside>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

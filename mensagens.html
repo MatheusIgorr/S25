@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gmail Clone</title>
+</head>
+<style>* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  height: 100vh;
+  display: flex;
+  background: #6fc4d3;
+}
+
+.container {
+  display: flex;
+  width: 100%;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 220px;
+  background-color: #0a82b5;
+  color: #fff;
+  padding: 20px;
+  height: 100vh;
+  display: flex;
+  margin-left: -100px;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logo-img {
+  width: 80px;
+  margin-left: 80px;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.sidebar h2 {
+     margin-left: 100px;
+  margin-bottom: 20px;
+  font-size: 20px;
+}
+
+.sidebar ul {
+    margin-left: 60px;
+  list-style: none;
+  width: 100%;
+}
+
+.sidebar p {
+    margin-left: 60px;
+  margin-bottom: 15px;
+  cursor: pointer;
+  font-weight: bold;
+  color: #fff;
+  padding: 8px;
+  border-radius: 5px;
+  transition: background 0.3s;
+}
+
+.sidebar p:hover {
+  background-color: #0b67a0;
+}
+
+/* Main content */
+.main-content {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+  height: 100vh;
+}
+
+.main-content h2 {
+  margin-bottom: 20px;
+  color: #073185;
+}
+
+.emails {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.email {
+  background-color: #fff;
+  padding: 15px;
+  border-left: 5px solid #166f81;
+  border-radius: 8px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.05);
+  transition: background 0.2s;
+}
+
+.email:hover {
+  background-color: #f9f9f9;
+}
+
+/* Scrollbar personalizada */
+.main-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.main-content::-webkit-scrollbar-thumb {
+  background: #0c197d;
+  border-radius: 10px;
+}
+
+.main-content::-webkit-scrollbar-track {
+  background: #f5f5f5;
+}
+</style>
+<body>
+  <div class="container">
+    <aside class="sidebar">
+      <img src="img/icon-msg.png" alt="Logo" class="logo-img" />
+      <h2>Gmail </h2>
+      <ul>
+        <p>📥 Caixa de Entrada</p>
+        <p>📤 Enviados</p>
+        <p>📝 Rascunhos</p>
+      </ul>
+    </aside>
+
+    <main class="main-content">
+      <h2>Caixa de Entrada</h2>
+      <div class="emails">
+  <div class="email"><strong>Claro</strong><p>Você ganhou 2GB bônus. Responda "SIM" para ativar.</p></div>
+  <div class="email"><strong>BetFácil</strong><p>🎰 Aposte hoje e ganhe 50% de bônus no primeiro depósito!</p></div>
+  <div class="email"><strong>Vivo</strong><p>Sua fatura já está disponível. Acesse o app Meu Vivo.</p></div>
+  <div class="email"><strong>MegaJogo</strong><p>🔥 Mega odds no jogo de hoje! Clique e confira.</p></div>
+  <div class="email"><strong>TIM</strong><p>Seu pacote de internet expirou. Recarregue agora e ganhe bônus!</p></div>
+  <div class="email"><strong>ApostaVIP</strong><p>💰 R$20 grátis para novos usuários. Não perca!</p></div>
+  <div class="email"><strong>Oi</strong><p>Temos uma nova oferta para você! Ligue *144 para saber mais.</p></div>
+  <div class="email"><strong>JogueJá</strong><p>⚽ Participe da rodada especial com prêmios em dobro!</p></div>
+  <div class="email"><strong>NextBet</strong><p>Ganhe 100% no seu primeiro depósito até R$200!</p></div>
+  <div class="email"><strong>Claro</strong><p>Atualize seus dados e receba benefícios exclusivos.</p></div>
+</div>
+    </main>
+  </div>
+</body>
+</html>

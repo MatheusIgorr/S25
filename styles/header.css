@@ -1,0 +1,174 @@
+/* Header Styles */
+.top-header {
+  background-color: var(--steam-dark-blue);
+  padding: var(--spacing-sm) 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.top-header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.steam-logo {
+  height: 44px;
+  width: auto;
+}
+
+.main-nav ul {
+  display: flex;
+  gap: var(--spacing-lg);
+}
+
+.main-nav a {
+  color: var(--steam-text);
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  padding: var(--spacing-xs) 0;
+  position: relative;
+  transition: color 0.2s ease;
+}
+
+.main-nav a:hover, 
+.main-nav li.active a {
+  color: var(--steam-highlight);
+}
+
+.main-nav li.active a::after {
+  content: "";
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--steam-highlight);
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.user-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  font-size: 0.8rem;
+}
+
+.install-button {
+  background-color: var(--steam-green);
+  color: white;
+  padding: var(--spacing-xs) var(--spacing-md);
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  transition: background-color 0.2s ease;
+}
+
+.install-button:hover {
+  background-color: #75a612;
+}
+
+.login-link {
+  color: var(--steam-text);
+  transition: color 0.2s ease;
+}
+
+.login-link:hover {
+  color: var(--steam-highlight);
+}
+
+.separator {
+  color: #4d4d4d;
+}
+
+.language-selector {
+  color: var(--steam-text);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.language-selector:hover {
+  color: var(--steam-highlight);
+}
+
+/* Secondary Navigation */
+.secondary-nav {
+  background-color: #2a4153;
+  padding: var(--spacing-xs) 0;
+  border-bottom: 1px solid #2d5066;
+}
+
+.secondary-nav .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.store-nav ul {
+  display: flex;
+  gap: var(--spacing-md);
+}
+
+.store-nav a {
+  color: var(--steam-text);
+  font-size: 0.9rem;
+  padding: var(--spacing-xs) 0;
+  transition: color 0.2s ease;
+}
+
+.store-nav a:hover {
+  color: var(--steam-highlight);
+}
+
+.search-box {
+  display: flex;
+  height: 28px;
+}
+
+.search-box input {
+  background-color: #316282;
+  border: 1px solid #1a3c54;
+  border-radius: 3px 0 0 3px;
+  color: var(--steam-text-light);
+  padding: 0 var(--spacing-sm);
+  width: 200px;
+  font-size: 0.9rem;
+  transition: background-color 0.2s ease;
+}
+
+.search-box input:focus {
+  background-color: #3d7397;
+  outline: none;
+}
+
+.search-box input::placeholder {
+  color: #7095ad;
+}
+
+.search-button {
+  background-color: #4c6b22;
+  border-radius: 0 3px 3px 0;
+  color: #a5d642;
+  padding: 0 var(--spacing-sm);
+  transition: background-color 0.2s ease;
+}
+
+.search-button:hover {
+  background-color: #5a7f2a;
+}

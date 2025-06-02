@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LinkedIn Clone</title>
+</head>
+<style>
+      * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+        Ubuntu, Cantarell, 'Open Sans', sans-serif;
+      background-color: #f3f2ef;
+      color: rgba(0, 0, 0, 0.9);
+      line-height: 1.5;
+      min-height: 100vh;
+    }
+
+    /* Cabeçalho */
+    header.header {
+      background-color: white;
+      padding: 0 24px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    }
+
+    nav.nav-container {
+      max-width: 1128px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      height: 56px;
+      gap: 24px;
+    }
+
+    .logo {
+      background-color: #0a66c2;
+      color: white;
+      width: 50%;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      font-weight: 700;
+      border-radius: 6px;
+      user-select: none;
+    }
+
+    .search {
+      flex: 1;
+      max-width: 300px;
+      position: relative;
+    }
+
+    .search input {
+      width: 200px;
+      padding: 8px 12px 8px 40px;
+      border: none;
+      border-radius: 6px;
+      background-color: #eef3f8;
+      font-size: 14px;
+      outline-offset: 2px;
+      transition: background-color 0.3s ease;
+    }
+    .search input::placeholder {
+      color: rgba(0, 0, 0, 0.4);
+    }
+    .search input:focus {
+      background-color: white;
+      box-shadow: 0 0 5px #0a66c2;
+    }
+
+    /* Ícone lupa no input */
+    .search::before {
+      content: '🔍';
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 18px;
+      color: rgba(0, 0, 0, 0.4);
+      pointer-events: none;
+    }
+
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+
+    .nav-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: rgba(0, 0, 0, 0.6);
+      text-decoration: none;
+      font-size: 12px;
+      min-width: 80px;
+      cursor: pointer;
+      user-select: none;
+      transition: color 0.3s ease;
+    }
+    .nav-item:hover,
+    .nav-item:focus {
+      color: #0a66c2;
+      outline: none;
+    }
+    .nav-item.active {
+      color: #0a66c2;
+      font-weight: 600;
+    }
+
+    /* Ícones simples inline SVG */
+    .nav-item svg {
+      width: 24px;
+      height: 24px;
+      fill: currentColor;
+      margin-bottom: 2px;
+    }
+
+    .nav-profile {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 12px;
+      color: rgba(0, 0, 0, 0.6);
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .nav-profile img {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 2px;
+      border: 2px solid transparent;
+      transition: border-color 0.3s ease;
+    }
+    .nav-profile:hover img,
+    .nav-profile:focus img {
+      border-color: #0a66c2;
+      outline: none;
+    }
+
+    /* Container principal */
+    main.main-container {
+      max-width: 1128px;
+      margin: 80px auto 40px;
+      padding: 0 24px;
+      display: grid;
+      grid-template-columns: 240px 1fr 320px;
+      gap: 24px;
+      min-height: 80vh;
+    }
+
+    /* Cartões Perfil e Notícias */
+    .profile-card,
+    .news-card {
+      background-color: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 0 6px rgba(0, 0, 0, 0.08);
+    }
+
+    .profile-background {
+      height: 60px;
+      background-image: linear-gradient(90deg, #0a66c2 0%, #0084bf 100%);
+    }
+
+    .profile-info {
+      text-align: center;
+      padding: 16px 16px 24px;
+    }
+
+    .profile-info img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      border: 3px solid white;
+      margin-top: -40px;
+      object-fit: cover;
+      box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .profile-info h2 {
+      margin-top: 16px;
+      font-size: 18px;
+      font-weight: 700;
+      color: rgba(0, 0, 0, 0.9);
+    }
+
+    .profile-info p {
+      color: rgba(0, 0, 0, 0.6);
+      font-size: 13px;
+      margin-top: 6px;
+      font-weight: 500;
+    }
+
+    .profile-stats {
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(0, 0, 0, 0.1);
+      font-size: 13px;
+      color: rgba(0, 0, 0, 0.7);
+    }
+    .profile-stats p {
+      margin-bottom: 8px;
+    }
+
+    /* Feed */
+    section.feed {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .create-post {
+      background-color: white;
+      border-radius: 10px;
+      padding: 16px;
+      margin-bottom: 16px;
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.08);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .create-post > div {
+      display: flex;
+      align-items: center;
+    }
+
+    .create-post img {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      margin-right: 12px;
+      object-fit: cover;
+      box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .create-post button {
+      flex: 1;
+      padding: 12px 16px;
+      border: 1px solid rgba(0, 0, 0, 0.3);
+      border-radius: 35px;
+      background-color: white;
+      text-align: left;
+      cursor: pointer;
+      font-size: 14px;
+      color: rgba(0, 0, 0, 0.7);
+      transition: background-color 0.3s ease, border-color 0.3s ease;
+      user-select: none;
+    }
+    .create-post button:hover,
+    .create-post button:focus {
+      background-color: #eef3f8;
+      border-color: #0a66c2;
+      outline: none;
+    }
+
+    .post-actions {
+      margin-top: 12px;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .action-button {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 16px;
+      border: none;
+      background: none;
+      color: rgba(0, 0, 0, 0.6);
+      font-size: 14px;
+      cursor: pointer;
+      border-radius: 6px;
+      user-select: none;
+      transition: background-color 0.2s ease;
+    }
+
+    .action-button:hover,
+    .action-button:focus {
+      background-color: rgba(0, 0, 0, 0.1);
+      outline: none;
+    }
+
+    /* Usando ícones SVG inline para os botões de ação */
+    .action-button svg {
+      width: 18px;
+      height: 18px;
+      fill: currentColor;
+    }
+
+    /* Post */
+    .post {
+      background-color: white;
+      border-radius: 10px;
+      padding: 16px;
+      margin-bottom: 16px;
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.08);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .post-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 14px;
+      gap: 12px;
+    }
+
+    .post-header img {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .post-info h3 {
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 2px;
+      color: rgba(0, 0, 0, 0.9);
+    }
+
+    .post-info p {
+      font-size: 13px;
+      color: rgba(0, 0, 0, 0.6);
+      margin-bottom: 2px;
+    }
+
+    .post-info span {
+      font-size: 12px;
+      color: rgba(0, 0, 0, 0.5);
+    }
+
+    .post-content p {
+      font-size: 14px;
+      line-height: 1.4;
+      color: rgba(0, 0, 0, 0.8);
+    }
+
+    .post-content img {
+      width: 100%;
+      border-radius: 6px;
+      margin-top: 12px;
+      box-shadow: 0 0 6px rgba(0, 0, 0, 0.05);
+      object-fit: cover;
+    }
+
+    /* Notícias */
+    .news-card {
+      padding: 16px;
+    }
+
+    .news-card h3 {
+      font-size: 18px;
+      margin-bottom: 16px;
+      font-weight: 700;
+      color: rgba(0, 0, 0, 0.9);
+    }
+
+    .news-list {
+      list-style: none;
+    }
+
+    .news-list li {
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+    }
+
+    .news-list li:hover,
+    .news-list li:focus {
+      background-color: #eef3f8;
+      outline: none;
+    }
+
+    .news-list h4 {
+      font-size: 15px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.9);
+    }
+
+    .news-list p {
+      font-size: 12px;
+      color: rgba(0, 0, 0, 0.6);
+      margin-top: 4px;
+    }
+
+    /* Responsividade */
+    @media (max-width: 768px) {
+      main.main-container {
+        grid-template-columns: 1fr;
+        margin-top: 100px;
+        padding: 0 16px;
+      }
+
+      aside.news-card {
+        display: none;
+      }
+
+      .nav-menu span {
+        display: none;
+      }
+
+      .nav-item {
+        min-width: auto;
+      }
+
+      .create-post > div {
+        flex-wrap: wrap;
+      }
+    }
+</style>
+<body>
+    <!-- Cabeçalho -->
+    <header class="header">
+        <nav class="nav-container">
+            <div class="logo">in</div>
+            <div class="search">
+                <input type="text" placeholder="Pesquisar">
+            </div>
+            <div class="nav-menu">
+                <a href="#" class="nav-item active">
+                    <i class="icon-home"></i>
+                    <span>Início</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <i class="icon-network"></i>
+                    <span>Minha Rede</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <i class="icon-jobs"></i>
+                    <span>Vagas</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <i class="icon-messaging"></i>
+                    <span>Mensagens</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <i class="icon-notifications"></i>
+                    <span>Notificações</span>
+                </a>
+                <div class="nav-profile">
+                    <img src="https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&w=150" alt="Perfil">
+                    <span>Eu</span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Conteúdo Principal -->
+    <main class="main-container">
+        <!-- Perfil Lateral -->
+        <aside class="profile-card">
+            <div class="profile-background"></div>
+            <div class="profile-info">
+                <img src="https://media.licdn.com/dms/image/v2/D4D03AQEnyvMTw5JhBQ/profile-displayphoto-shrink_200_200/B4DZRf3_5uHcAY-/0/1736775303385?e=1754524800&v=beta&t=jk6aJcdiXlj2HUl5MLYLNqY_EIGFGLJr8LVb1IjD4w8" alt="Foto de Perfil">
+                <h2>
+                    Matheus Igor
+                    <span style="color: #0a66c2; font-size: 0.8em;">✔</span>
+                </h2>
+                <p>Desenvolvedor Front-end | HTML | CSS | JavaScript | MySQL |</p>
+                <p><strong>Universidade Paulista</strong></p>
+                <p>Brasília, Distrito Federal, Brasil</p>
+                <a href="https://frontdevmatheus.netlify.app/" target="_blank">https://frontdevmatheus.netlify.app/</a>
+                <div class="profile-stats">
+                    <p>Conexões: 3</p>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Feed de Postagens -->
+        <section class="feed">
+            <!-- Criar Post -->
+            <div class="create-post">
+                <img src="https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&w=150" alt="Perfil">
+                <button>Começar publicação</button>
+                <div class="post-actions">
+                    <button class="action-button">
+                        <i class="icon-photo"></i>
+                        Foto
+                    </button>
+                    <button class="action-button">
+                        <i class="icon-video"></i>
+                        Vídeo
+                    </button>
+                    <button class="action-button">
+                        <i class="icon-event"></i>
+                        Evento
+                    </button>
+                    <button class="action-button">
+                        <i class="icon-article"></i>
+                        Artigo
+                    </button>
+                </div>
+            </div>
+
+            <!-- Posts -->
+            <div class="post">
+                <div class="post-header">
+                    <img src="https://images.pexels.com/photos/733872/pexels-photo-733872.jpeg?auto=compress&cs=tinysrgb&w=150" alt="Autor">
+                    <div class="post-info">
+                        <h3>Maria Santos</h3>
+                        <p>Gerente de Marketing</p>
+                        <span>2h</span>
+                    </div>
+                </div>
+                <div class="post-content">
+                    <p>Muito feliz em anunciar o lançamento do nosso novo produto! Foram meses de trabalho em equipe.</p>
+                    <img src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Post">
+                </div>
+                <div class="post-actions">
+                    <button>
+                        <i class="icon-like"></i>
+                        Curtir
+                    </button>
+                    <button>
+                        <i class="icon-comment"></i>
+                        Comentar
+                    </button>
+                    <button>
+                        <i class="icon-share"></i>
+                        Compartilhar
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Notícias -->
+        <aside class="news-card">
+            <h3>LinkedIn Notícias</h3>
+            <ul class="news-list">
+                <li>
+                    <h4>As principais tendências em tecnologia</h4>
+                    <p>Há 1 dia • 5.000 leitores</p>
+                </li>
+                <li>
+                    <h4>Mercado de trabalho em 2024</h4>
+                    <p>Há 2 dias • 3.200 leitores</p>
+                </li>
+            </ul>
+        </aside>
+    </main>
+</body>
+</html>

@@ -1,0 +1,146 @@
+/* Main Styles */
+:root {
+  /* Colors */
+  --steam-dark-blue: #171a21;
+  --steam-blue: #1b2838;
+  --steam-light-blue: #2a475e;
+  --steam-highlight: #66c0f4;
+  --steam-hover: #4b7498;
+  --steam-text: #c6d4df;
+  --steam-text-light: #e1e1e1;
+  --steam-green: #5c7e10;
+  --steam-discount: #a4d007;
+
+  /* Spacing */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+}
+
+body {
+  background-color: var(--steam-blue);
+  color: var(--steam-text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+}
+
+.global-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--steam-text-light);
+  margin-bottom: var(--spacing-sm);
+}
+
+h2 {
+  font-size: 1.2rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: var(--spacing-md);
+}
+
+h3 {
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: var(--spacing-sm);
+  color: #9fafb8;
+}
+
+.main-content {
+  flex: 1;
+  padding: var(--spacing-md) 0;
+}
+
+.main-content .container {
+  display: flex;
+  gap: var(--spacing-xl);
+}
+
+.content {
+  flex: 1;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-lg);
+}
+
+.view-more {
+  color: var(--steam-highlight);
+  font-size: 0.9rem;
+  transition: color 0.2s ease;
+}
+
+.view-more:hover {
+  color: var(--steam-text-light);
+}
+
+/* Main Footer */
+.main-footer {
+  background-color: var(--steam-dark-blue);
+  padding: var(--spacing-xl) 0;
+  margin-top: var(--spacing-xl);
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--spacing-lg);
+}
+
+.footer-logo {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-lg);
+}
+
+.valve-logo {
+  height: 25px;
+}
+
+.steam-footer-logo {
+  height: 30px;
+}
+
+.footer-text {
+  font-size: 0.8rem;
+  color: #8F98A0;
+  max-width: 700px;
+}
+
+.footer-text p {
+  margin-bottom: var(--spacing-sm);
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--spacing-md);
+  font-size: 0.8rem;
+  color: var(--steam-highlight);
+}
+
+.footer-links a:hover {
+  color: var(--steam-text-light);
+  text-decoration: underline;
+}

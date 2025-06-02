@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Controle de Volume Vertical</title>
+<style>
+  .volume-container {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin: 50px;
+  }
+
+  .buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .volume-up, .volume-down {
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    user-select: none;
+    border-radius: 5px;
+    font-size: 24px;
+  }
+
+  .volume-bar-container {
+    width: 30px;
+    height: 150px;
+    background-color: #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
+  .volume-bar {
+    width: 100%;
+    background-color: #007bff;
+    height: 50%; /* volume inicial 50% */
+    transition: height 0.3s ease;
+  }
+</style>
+</head>
+<body>
+
+<div class="volume-container">
+  <div class="buttons">
+    <div class="volume-up">+</div>
+    <div class="volume-down">-</div>
+  </div>
+  <div class="volume-bar-container">
+    <div class="volume-bar"></div>
+  </div>
+</div>
+
+<script>
+  const volumeBar = document.querySelector('.volume-bar');
+  const volumeUp = document.querySelector('.volume-up');
+  const volumeDown = document.querySelector('.volume-down');
+
+  let volume = 50;
+
+  function updateVolumeBar() {
+    volumeBar.style.height = volume + '%';
+  }
+
+  volumeUp.addEventListener('click', () => {
+    if (volume < 100) {
+      volume += 10;
+      if (volume > 100) volume = 100;
+      updateVolumeBar();
+    }
+  });
+
+  volumeDown.addEventListener('click', () => {
+    if (volume > 0) {
+      volume -= 10;
+      if (volume < 0) volume = 0;
+      updateVolumeBar();
+    }
+  });
+
+  // Atualiza a barra no carregamento
+  updateVolumeBar();
+</script>
+
+</body>
+</html>

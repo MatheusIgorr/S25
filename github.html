@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Perfil GitHub - MatheusIgorr</title>
+  <style>
+    body {
+      background: #161b22;
+      color: #c9d1d9;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+      margin: 0;
+      padding: 40px 20px;
+      position: relative;
+    }
+    .profile-card {
+      background: #161b22;
+      padding: 40px;
+      border-radius: 16px;
+      width: 100%;
+      max-width: 450px;
+      box-shadow: 0 8px 24px rgba(149, 157, 165, 0.2);
+      text-align: center;
+      min-height: 400px;
+    }
+    .avatar {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+      margin-bottom: 20px;
+    }
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 600;
+      margin: 0;
+      color: #c9d1d9;
+    }
+    .username {
+      font-size: 1.2rem;
+      color: #8b949e;
+      margin-top: 6px;
+      margin-bottom: 20px;
+    }
+    .bio {
+      font-size: 1rem;
+      line-height: 1.5;
+      margin-bottom: 24px;
+      color: #c9d1d9;
+      min-height: 48px;
+    }
+    .stats {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin-bottom: 24px;
+    }
+    .stat-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 1rem;
+      color: #8b949e;
+    }
+    .stat-item strong {
+      font-size: 1.3rem;
+      color: #c9d1d9;
+    }
+    a.profile-link {
+      display: inline-block;
+      padding: 10px 24px;
+      font-weight: 600;
+      font-size: 1rem;
+      color: #58a6ff;
+      background-color: transparent;
+      border: 1.5px solid #58a6ff;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    a.profile-link:hover {
+      background-color: #58a6ff;
+      color: #0d1117;
+    }
+
+    /* Estilos da tela de carregamento */
+    #loading {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: #58a6ff;
+      font-size: 1.4rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+ ::-webkit-scrollbar-thumb:hover {
+      background-color: #aaa;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="profile-card" id="profile">
+    <!-- Conteúdo será inserido aqui -->
+  </div>
+
+  <div id="loading">
+    <div class="spinner"></div>
+    Carregando perfil...
+  </div>
+
+  <script>
+    const username = 'MatheusIgorr';
+
+    const loadingEl = document.getElementById('loading');
+    const profileDiv = document.getElementById('profile');
+
+    // Mostrar a tela de carregamento
+    loadingEl.style.display = 'flex';
+
+    fetch(`https://api.github.com/users/${username}`)
+      .then(res => res.json())
+      .then(data => {
+        loadingEl.style.display = 'none'; // Esconde o loading após carregar
+
+        profileDiv.innerHTML = `
+          <img class="avatar" src="${data.avatar_url}" alt="Avatar de ${data.login}" />
+          <h1>${data.name || data.login}</h1>
+          <div class="username">@${data.login}</div>
+          <div class="bio">${data.bio || 'Este usuário não adicionou uma bio.'}</div>
+          <div class="stats">
+            <div class="stat-item">
+              <strong>${data.public_repos}</strong>
+              Repositórios
+            </div>
+            <div class="stat-item">
+              <strong>${data.followers}</strong>
+              Seguidores
+            </div>
+            <div class="stat-item">
+              <strong>${data.following}</strong>
+              Seguindo
+            </div>
+          </div>
+          <a class="profile-link" href="${data.html_url}" target="_blank" rel="noopener noreferrer">Ver perfil no GitHub</a>
+        `;
+      })
+      .catch(() => {
+        loadingEl.style.display = 'none'; // Esconde loading em caso de erro
+        profileDiv.innerText = 'Erro ao carregar o perfil.';
+      });
+  </script>
+
+</body>
+</html>
